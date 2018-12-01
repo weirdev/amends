@@ -85,15 +85,18 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
       body: TabBarView(
         controller: _tabController,
         children: <Widget>[
+          const Text('My amends'),
           ListView(
             shrinkWrap: true,
             padding: const EdgeInsets.all(20.0),
             children: <Widget>[
-              buildAmendListing(context, "Bought Something From Someone Sketchy"),
-              buildAmendListing(context, "bought stuff")
+              buildAmendListing(context, "Bought Something From Someone Sketchy", "Amends to charity X"),
+              buildAmendListing(context, "bought stuff", "Amends to charity Y"),
+              buildAmendListing(context, "bought stuff", "Amends to charity Y"),
+              buildAmendListing(context, "bought stuff", "Amends to charity Y"),
+              buildAmendListing(context, "bought stuff", "Amends to charity Y")
             ],
           ),
-          const Text('Transactions'),
           const Text('Rules')
         ],
       ),
@@ -101,14 +104,15 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   }
 }
 
-Widget buildAmendListing(BuildContext context, String listing) => Padding(
+Widget buildAmendListing(BuildContext context, String listing,
+    String description) => Padding(
   padding: new EdgeInsets.all(10.0),
   child: new Card(
     child: new Column(
       children: <Widget>[
         new ListTile(
           title: Text(listing),
-          subtitle: const Text("Decription : Ut Oh!!"),
+          subtitle: Text(description),
         ),
         new ButtonTheme.bar(
           child: new ButtonBar(
